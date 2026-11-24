@@ -5,8 +5,12 @@ body {
 }
 
 .main-content {
-  margin-right: 350px;
+  margin-right: 0;
   transition: margin-right 0.3s ease;
+}
+
+body.cart-open .main-content {
+  margin-right: 350px;
 }
 
 /* CARRITO SIDEBAR */
@@ -27,6 +31,7 @@ body {
 
 .cart-sidebar.hidden {
   transform: translateX(100%);
+  visibility: hidden;
 }
 
 .cart-header {
@@ -152,9 +157,19 @@ body {
   display: block;
 }
 
+@media (min-width: 769px) {
+  .cart-overlay.active {
+    display: none;
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .main-content {
+    margin-right: 0;
+  }
+
+  body.cart-open .main-content {
     margin-right: 0;
   }
 

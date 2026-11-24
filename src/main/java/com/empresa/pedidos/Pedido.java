@@ -5,6 +5,7 @@ import com.empresa.excepciones.*;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 public class Pedido {
@@ -14,6 +15,8 @@ public class Pedido {
     private int usuarioId; 
     private String estado = "pendiente"; 
     private double costoTotal;
+    @Column(nullable = false)
+    private LocalDateTime fechaCreacion = LocalDateTime.now();
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<LineaPedido> lineas = new ArrayList<>();
@@ -43,5 +46,6 @@ public class Pedido {
     public String getEstado() { return estado; }
     public void setEstado(String e) { this.estado = e; }
     public double getCostoTotal() { return costoTotal; }
+    public LocalDateTime getFechaCreacion() { return fechaCreacion; }
     public List<LineaPedido> getLineas() { return lineas; }
 }
